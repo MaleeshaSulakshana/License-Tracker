@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+
+    </div>
+
+    <!-- <div class="row">
+        
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div>
+                            <h5 class="card-title mb-0">Fine Chart</h5>
+                        </div>
+                    </div>
+                    <div class="" id="sales-chart" style="height: 355px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex mb-4 no-block">
+                        <h5 class="card-title mb-0 align-self-center">New Users</h5>
+                        <div class="ms-auto">
+                            <select class="form-select b-0">
+                                <option selected="">Today</option>
+                                <option value="1">Tomorrow</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="visitor" style="height:260px; width:100%;"></div>
+                    <ul class="list-inline mt-4 text-center font-12">
+                        <li><i class="fa fa-circle text-purple"></i> Users</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div class="row">
+
+        {% if new_unpaid_fines %}
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">New Fines</h5>
+                    <ul class="feeds">
+
+                        {% for item in new_unpaid_fines %}
+                        <li>
+                            <div class="bg-light-info"></div> {{ item[1] }} | {{ item[3] }} | Rs.{{
+                            item[4] }}<span class="text-muted">{{ item[5] }}</span>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if old_unpaid_fines %}
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Long-term unpaid fines</h5>
+                    <ul class="feeds">
+
+                        {% for item in old_unpaid_fines %}
+                        <li>
+                            <div class="bg-light-info"></div> {{ item[1] }} | {{ item[3] }} | Rs.{{
+                            item[4] }}<span class="text-muted">{{ item[5] }}</span>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

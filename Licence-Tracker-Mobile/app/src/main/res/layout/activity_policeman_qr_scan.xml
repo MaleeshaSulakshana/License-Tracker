@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white"
+    tools:context=".Policeman.PolicemanQrScanActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="Scan QR Code"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="24dp"
+        android:textColor="@color/blue2"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/qr_scanning"/>
+
+    <Button
+        android:id="@+id/btnScanQr"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_background"
+        android:text="Scan"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"/>
+
+</LinearLayout>

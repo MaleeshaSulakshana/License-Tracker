@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if details %}
+
+<div class="container-fluid">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Policeman Details</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- column -->
+        <div class="col-12">
+            <div class="card">
+                <!-- Tab panes -->
+                <div class="card-body">
+                    <form class="form-horizontal form-material mx-2">
+
+                        <div class="form-group">
+                            <label class="id">Police Id</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Police Id" class="form-control form-control-line"
+                                    name="id" id="id" value="{{ details[0][1] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="name">Full Name</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Full Name" class="form-control form-control-line"
+                                    name="name" id="name" value="{{ details[0][2] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-12">Email</label>
+                            <div class="col-md-12">
+                                <input type="email" placeholder="Email" class="form-control form-control-line"
+                                    name="email" id="email" value="{{ details[0][3] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="number">Phone No</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Phone No" class="form-control form-control-line"
+                                    name="number" id="number" value="{{ details[0][5] }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="designation">Designation</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Designation" class="form-control form-control-line"
+                                    name="designation" id="designation" value="{{ details[0][6] }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" id="btnUpdate">Update</button>
+                                <button class="btn btn-success" id="btnDeactivate">Disable</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    $(function () {
+        $('#btnUpdate').click(function () {
+
+            var id = $('#id').val();
+            var name = $('#name').val();
+            var number = $('#number').val();
+            var designation = $('#designation').val();
+
+            if (id == "" || name == "" || number == "" || designation == "") {
+                swal.fire("Update Policeman", "Fields are empty!", "warning");
+
+            } else {
+
+                var form_data = new FormData();
+                form_data.append('id', id);
+                form_data.append('name', name);
+                form_data.append('number', number);
+                form_data.append('designation', designation);
+
+                $.ajax({
+                    url: "/update_policeman",
+                    enctype: 'multipart/form-data',
+                    data: form_data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    type: 'POST',
+                })
+                    .done(function (data) {
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                        else if (data.success) {
+                            Swal.fire("Update Policeman", data.success, "success");
+                            $('#form')[0].reset();
+                        }
+                        else if (data.error) {
+                            Swal.fire("Update Policeman", data.error, "warning");
+                        }
+                        else {
+                            Swal.fire("Update Policeman", "Some error occur!", "warning");
+                        }
+                    });
+
+            }
+
+            event.preventDefault();
+        });
+    });
+
+
+    $(function () {
+        $('#btnDeactivate').click(function () {
+
+            var id = $('#id').val();
+
+            if (id == "") {
+                swal.fire("Deactivate Policeman", "Fields are empty!", "warning");
+
+            } else {
+
+                var form_data = new FormData();
+                form_data.append('id', id);
+
+                $.ajax({
+                    url: "/deactivate_policeman",
+                    enctype: 'multipart/form-data',
+                    data: form_data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    type: 'POST',
+                })
+                    .done(function (data) {
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                        else if (data.success) {
+                            Swal.fire("Deactivate Policeman", data.success, "success");
+                            window.location.href = "/policemen";
+                        }
+                        else if (data.error) {
+                            Swal.fire("Deactivate Policeman", data.error, "warning");
+                        }
+                        else {
+                            Swal.fire("Deactivate Policeman", "Some error occur!", "warning");
+                        }
+                    });
+
+            }
+
+            event.preventDefault();
+        });
+    });
+
+</script>
+
+
+{% endif %}
+
+{% endblock %}

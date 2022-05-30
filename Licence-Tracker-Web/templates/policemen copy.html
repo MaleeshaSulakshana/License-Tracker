@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">All System Registered Policemen</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <a href="/add_policeman"
+                class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down text-white"> Add New
+                Policeman</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- column -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Police Id</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>045135946</td>
+                                    <td>Yasindu</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>045135945</td>
+                                    <td>Senuri</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

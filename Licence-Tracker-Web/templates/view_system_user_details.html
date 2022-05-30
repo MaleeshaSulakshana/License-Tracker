@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if details %}
+
+<div class="container-fluid">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">System User Details</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- column -->
+        <div class="col-12">
+            <div class="card">
+                <!-- Tab panes -->
+                <div class="card-body">
+                    <form class="form-horizontal form-material mx-2">
+
+                        <div class="form-group">
+                            <label class="name">Name</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Name" class="form-control form-control-line" name="name"
+                                    id="name" value="{{ details[0][1] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-12">Email</label>
+                            <div class="col-md-12">
+                                <input type="email" placeholder="Email" class="form-control form-control-line"
+                                    name="email" id="email" value="{{ details[0][2] }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button onclick="remove('{{ details[0][0] }}')" class="btn btn-success">Remove</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    function remove($id) {
+
+        var form_data = new FormData();
+        form_data.append('id', $id);
+
+        $.ajax({
+            url: "/remove_system_user",
+            enctype: 'multipart/form-data',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            type: 'POST',
+        })
+            .done(function (data) {
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+                else if (data.success) {
+                    Swal.fire("Remove System User", data.success, "success");
+                    window.location.href = "/system_users";
+                }
+                else if (data.error) {
+                    Swal.fire("Remove System User", data.error, "warning");
+                }
+                else {
+                    Swal.fire("Remove System User", "Some error occur!", "warning");
+                }
+            });
+
+        event.preventDefault();
+    }
+
+</script>
+
+
+{% endif %}
+
+{% endblock %}

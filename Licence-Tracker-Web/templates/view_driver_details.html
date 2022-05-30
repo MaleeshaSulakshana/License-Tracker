@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if details %}
+
+<div class="container-fluid">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">User Details</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- column -->
+        <div class="col-12">
+            <div class="card">
+                <!-- Tab panes -->
+                <div class="card-body">
+                    <form class="form-horizontal form-material mx-2">
+
+                        <div class="form-group">
+                            <label class="fname">First Name</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="First Name" class="form-control form-control-line"
+                                    name="fname" id="fname" value="{{ details[0][1] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lname">Last Name</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Last Name" class="form-control form-control-line"
+                                    name="lname" id="lname" value="{{ details[0][2] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="nic">NIC</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="NIC" class="form-control form-control-line" name="nic"
+                                    id="nic" value="{{ details[0][3] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="number">Phone No</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Phone No" class="form-control form-control-line"
+                                    name="number" id="number" value="{{ details[0][4] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-12">Email</label>
+                            <div class="col-md-12">
+                                <input type="email" placeholder="Email" class="form-control form-control-line"
+                                    name="email" id="email" value="{{ details[0][5] }}" disabled>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+
+                                {% if details[0][7] != "" %}
+                                <a href="" class="btn btn-success">View NIC</a>
+                                {% endif %}
+
+                                {% if details[0][8] != "" %}
+                                <a href="" class="btn btn-success">View License</a>
+                                {% endif %}
+
+                                {% if details[0][9] != "" %}
+                                <a href="" class="btn btn-success">View Passport</a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

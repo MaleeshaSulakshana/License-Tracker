@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.licencetracker.licencetracker">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.Camera" />
+    <uses-feature android:name="android.hardware.Camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/image1"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/image1"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LicenceTracker">
+        <activity
+            android:name=".Policeman.PolicemanViewFineDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanViewFineListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanPswChangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanAddFineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanViewImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanViewDriverDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+        <activity
+            android:name=".User.UserFineDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserFinesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.ImageViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserUploadImagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.RecoveryCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserQrActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Policeman.PolicemanQrScanActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".Policeman.PolicemanDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserTypeSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.PswChangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
